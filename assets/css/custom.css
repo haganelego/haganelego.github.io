@@ -1,0 +1,8 @@
+/* Alternating section backgrounds */
+.hbb-section:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark .hbb-section:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}

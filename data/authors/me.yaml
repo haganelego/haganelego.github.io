@@ -1,0 +1,109 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: Daiju Kanaoka
+  given: Daiju
+  family: Kanaoka
+  alternate: '金岡 大樹'
+  pronunciation: ''
+  pronouns: ''
+postnominals: []
+status:
+  icon: ''
+role: Postdoctoral Researcher
+bio: |
+  I received the B.Eng and the M.Eng degree from Kyushu Institute of Technology, Japan, in 2020 and 2022.
+  I am currently a Ph.D. student in the graduate school of Life Science and Systems Engineering, Kyushu Institute of Technology.
+  My research interest includes object recognition, multimodal learning and domestic service robots.
+
+affiliations:
+  - name: RIKEN
+
+links:
+  - icon: at-symbol
+    url: mailto:daiju.kanaoka@riken.jp
+    label: E-mail Me
+  - icon: brands/x
+    url: https://x.com/haganeLego
+  - icon: brands/github
+    url: https://github.com/haganelego
+
+interests:
+  - Open-world Recognition
+  - Open-set Recognition
+  - Multimodal Learning
+  - Neural Radiance Fields
+
+education:
+  - degree: Doctor of Engineering
+    institution: Kyushu Institute of Technology, Department of Life Science and Systems Engineering
+    start: 2022-04-01
+    end: 2025-09-30
+  - degree: Master of Engineering
+    institution: Kyushu Institute of Technology, Department of Life Science and Systems Engineering
+    start: 2020-04-01
+    end: 2022-03-31
+  - degree: Bachelor of Engineering
+    institution: Kyushu Institute of Technology
+    start: 2016-04-01
+    end: 2020-03-31
+
+experience:
+  - role: Research Trainee
+    org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
+    start: 2022-04-01
+    summary: ''
+  - role: Executive Chairman
+    org: The Committee of World Robot Olympiad Fukuoka Preliminary Round
+    start: 2019-04-01
+    summary: |
+      World Robot Olympiad is one of the biggest robot competitions for children.
+
+# skills: []
+#
+# languages:
+#   - name: Japanese
+#     level: 5
+#     label: Native
+#   - name: English
+#     level: 3
+#     label: Intermediate
+#
+awards:
+  - title: "RoboCupJapanOpen 2022, @Home league, Domestic Standard Platform, 1st place"
+    awarder: RoboCup
+    date: "2023-01-01"
+    icon: hero/trophy
+  - title: "RoboCupJapanOpen 2021, @Home league, Domestic Standard Platform, 1st place"
+    awarder: RoboCup
+    date: "2022-01-01"
+    icon: hero/trophy
+  - title: "World Robot Challenge 2020, Partner Robot Challenge Real Space, 1st place"
+    awarder: World Robot Challenge
+    date: "2021-01-01"
+    icon: hero/trophy
+  - title: "RoboCup WORLDWIDE2021 @Home, Domestic Standard Platform League, 2nd place"
+    awarder: RoboCup
+    date: "2021-06-01"
+    icon: hero/trophy
+  - title: "SAES Best Poster Award"
+    awarder: SAES
+    date: "2021-03-01"
+    icon: hero/trophy
+  - title: "RoboCupJapanOpen 2020, @Home league, Domestic Standard Platform, 1st place"
+    awarder: RoboCup
+    date: "2020-01-01"
+    icon: hero/trophy
+  - title: "RoboCup Asia-Pacific TianJin Invitational Tournament 2019, 2nd place"
+    awarder: RoboCup
+    date: "2019-01-01"
+    icon: hero/trophy
+  - title: "World Robot Olympiad 2015 in Qatar (International competition), 3rd place"
+    awarder: World Robot Olympiad
+    date: "2015-11-01"
+    icon: hero/trophy
+  - title: "World Robot Olympiad 2015 (National competition), 2nd place"
+    awarder: World Robot Olympiad
+    date: "2015-09-01"
+    icon: hero/trophy
