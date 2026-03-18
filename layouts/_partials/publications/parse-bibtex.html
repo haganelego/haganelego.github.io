@@ -1,0 +1,157 @@
+{{/*
+  Parse a BibTeX string into a list of entries.
+  Input: dict with "bibtex" (string) and "featured" (slice of keys)
+  Output: slice of dicts with key, type, title, author, year, venue, pages, is_featured, raw
+*/}}
+{{ $bibtex := .bibtex | default "" }}
+{{ $featured := .featured | default slice }}
+{{ $results := slice }}
+
+{{ if $bibtex }}
+  {{/* Split by @ to get individual entries */}}
+  {{ $chunks := split $bibtex "@" }}
+  {{ range $chunks }}
+    {{ $chunk := strings.TrimSpace . }}
+    {{ if $chunk }}
+      {{ $entry_type := "" }}
+      {{ $entry_key := "" }}
+      {{ $title := "" }}
+      {{ $author := "" }}
+      {{ $year := "" }}
+      {{ $venue := "" }}
+      {{ $pages := "" }}
+      {{ $volume := "" }}
+      {{ $number := "" }}
+
+      {{/* Extract entry type (article, inproceedings, etc.) */}}
+      {{ $type_match := findRE `^(\w+)\s*\{` $chunk 1 }}
+      {{ if $type_match }}
+        {{ $entry_type = replaceRE `^(\w+)\s*\{.*` "$1" (index $type_match 0) }}
+      {{ end }}
+
+      {{/* Extract entry key */}}
+      {{ $key_match := findRE `^\w+\s*\{\s*([^,\s]+)` $chunk 1 }}
+      {{ if $key_match }}
+        {{ $entry_key = replaceRE `^\w+\s*\{\s*([^,\s]+)` "$1" (index $key_match 0) }}
+      {{ end }}
+
+      {{/* Extract title */}}
+      {{ $title_match := findRE `(?i)title\s*=\s*\{([^}]+)\}` $chunk 1 }}
+      {{ if $title_match }}
+        {{ $title = replaceRE `(?i)title\s*=\s*\{([^}]+)\}` "$1" (index $title_match 0) }}
+        {{ $title = strings.TrimRight "." $title }}
+      {{ end }}
+
+      {{/* Extract author */}}
+      {{ $author_match := findRE `(?i)author\s*=\s*\{([^}]+)\}` $chunk 1 }}
+      {{ if $author_match }}
+        {{ $author = replaceRE `(?i)author\s*=\s*\{([^}]+)\}` "$1" (index $author_match 0) }}
+      {{ end }}
+
+      {{/* Extract year */}}
+      {{ $year_match := findRE `(?i)year\s*=\s*\{?(\d{4})\}?` $chunk 1 }}
+      {{ if $year_match }}
+        {{ $year = replaceRE `(?i)year\s*=\s*\{?(\d{4})\}?` "$1" (index $year_match 0) }}
+      {{ end }}
+
+      {{/* Extract venue (booktitle for conference, journal for article) */}}
+      {{ $venue_match := findRE `(?i)(?:booktitle|journal)\s*=\s*\{([^}]+)\}` $chunk 1 }}
+      {{ if $venue_match }}
+        {{ $venue = replaceRE `(?i)(?:booktitle|journal)\s*=\s*\{([^}]+)\}` "$1" (index $venue_match 0) }}
+      {{ end }}
+
+      {{/* Extract pages */}}
+      {{ $pages_match := findRE `(?i)pages\s*=\s*\{([^}]+)\}` $chunk 1 }}
+      {{ if $pages_match }}
+        {{ $pages = replaceRE `(?i)pages\s*=\s*\{([^}]+)\}` "$1" (index $pages_match 0) }}
+      {{ end }}
+
+      {{/* Extract volume */}}
+      {{ $vol_match := findRE `(?i)volume\s*=\s*\{([^}]+)\}` $chunk 1 }}
+      {{ if $vol_match }}
+        {{ $volume = replaceRE `(?i)volume\s*=\s*\{([^}]+)\}` "$1" (index $vol_match 0) }}
+      {{ end }}
+
+      {{/* Extract number */}}
+      {{ $num_match := findRE `(?i)number\s*=\s*\{([^}]+)\}` $chunk 1 }}
+      {{ if $num_match }}
+        {{ $number = replaceRE `(?i)number\s*=\s*\{([^}]+)\}` "$1" (index $num_match 0) }}
+      {{ end }}
+
+      {{/* Check if featured */}}
+      {{ $is_featured := false }}
+      {{ range $featured }}
+        {{ if eq (strings.TrimSpace (printf "%v" .)) $entry_key }}
+          {{ $is_featured = true }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Format authors: "Last1, First1 and Last2, First2" -> "F1. Last1, F2. Last2" */}}
+      {{/* Highlight the site owner's name with <strong> */}}
+      {{ $formatted_authors := "" }}
+      {{ if $author }}
+        {{ $author_list := split $author " and " }}
+        {{ $author_parts := slice }}
+        {{ range $i, $a := $author_list }}
+          {{ $a = strings.TrimSpace $a }}
+          {{ $display_name := "" }}
+          {{ $is_me := false }}
+          {{ if strings.Contains $a "," }}
+            {{ $name_parts := split $a "," }}
+            {{ $last := strings.TrimSpace (index $name_parts 0) }}
+            {{ $first := "" }}
+            {{ if gt (len $name_parts) 1 }}
+              {{ $first = strings.TrimSpace (index $name_parts 1) }}
+            {{ end }}
+            {{ $initials := "" }}
+            {{ $first_names := split $first " " }}
+            {{ range $first_names }}
+              {{ $fn := strings.TrimSpace . }}
+              {{ if $fn }}
+                {{ $initials = printf "%s%s. " $initials (substr $fn 0 1) }}
+              {{ end }}
+            {{ end }}
+            {{ $initials = strings.TrimSpace $initials }}
+            {{ $display_name = printf "%s %s" $initials $last }}
+            {{ if eq (lower $last) "kanaoka" }}
+              {{ $is_me = true }}
+            {{ end }}
+          {{ else }}
+            {{ $display_name = $a }}
+            {{ if or (strings.Contains $a "金岡") (eq (lower $a) "kanaoka") }}
+              {{ $is_me = true }}
+            {{ end }}
+          {{ end }}
+          {{ if $is_me }}
+            {{ $author_parts = $author_parts | append (printf "<strong>%s</strong>" $display_name) }}
+          {{ else }}
+            {{ $author_parts = $author_parts | append $display_name }}
+          {{ end }}
+        {{ end }}
+        {{ $formatted_authors = delimit $author_parts ", " }}
+      {{ end }}
+
+      {{ if and $entry_key $title }}
+        {{ $results = $results | append (dict
+          "key" $entry_key
+          "type" $entry_type
+          "title" $title
+          "author" $author
+          "formatted_authors" $formatted_authors
+          "year" $year
+          "venue" $venue
+          "pages" $pages
+          "volume" $volume
+          "number" $number
+          "is_featured" $is_featured
+          "raw" (printf "@%s" $chunk)
+        ) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Sort by year descending */}}
+{{ $results = sort $results "year" "desc" }}
+
+{{ return $results }}

@@ -22,22 +22,25 @@ sections:
   - block: collection
     id: publications
     content:
-      title: Publications
-      text: |-
-        For more detail, please refer to [here](https://www.brain.kyutech.ac.jp/~tamukoh/achievement).
+      title: Featured Publications
+      text: ''
+      count: 0
       filters:
         folders:
           - publications
-        exclude_featured: false
+        featured_only: true
+      archive:
+        enable: true
+        text: See all publications →
+        link: /publications/
     design:
-      view: citation
+      view: featured-card
   - block: resume-experience
     id: experience
     content:
       username: me
     design:
       date_format: 'January 2006'
-      is_education_first: true
   - block: resume-awards
     id: awards
     content:

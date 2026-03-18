@@ -171,7 +171,7 @@
 
         {{ if $avatar }}
         <div class="avatar-wrapper {{ if $img }}-mt-24{{else}}mb-4{{end}}" style="width: {{$display_size}}px; height: {{$display_size}}px;">
-          {{ $avatar_image := $avatar.Fill (printf "%sx%s Center" $generation_size $generation_size) }}
+          {{ $avatar_image := $avatar.Fill (printf "%sx%s Smart" $generation_size $generation_size) }}
           <img class="avatar {{$shape_class}} border-4 border-white shadow-2xl"
                src="{{ $avatar_image.RelPermalink }}"
                alt="{{$profile.title}}"
@@ -345,7 +345,7 @@
               {{ partial "functions/get_icon" (dict "name" "identification" "attributes" "class='w-6 h-6 text-primary-600 dark:text-primary-400'") }}
             </div>
             {{ $i18n_about := i18n "about_me" }}
-            {{ $about_default := cond (eq $i18n_about "about_me") "Professional Summary" $i18n_about }}
+            {{ $about_default := cond (eq $i18n_about "about_me") "About me" $i18n_about }}
             {{ $about_heading := $about_default }}
             {{ $about_heading_raw := index $headings "about" }}
             {{ if eq (printf "%T" $about_heading_raw) "string" }}
@@ -465,10 +465,15 @@
               {{ with index . "end" }}{{ $end = printf "%v" . }}{{ end }}
               {{ $institution := "" }}
               {{ with index . "institution" }}{{ $institution = printf "%v" . }}{{ end }}
-              {{/* Extract year from end date (format: YYYY-MM-DD) */}}
+              {{/* Extract year and month from end date (format: YYYY-MM-DD) */}}
               {{ $display_year := $year }}
               {{ if and (not $display_year) $end }}
-                {{ $display_year = substr (printf "%v" $end) 0 4 }}
+                {{ $parsed_end := try (time $end) }}
+                {{ if not $parsed_end.Err }}
+                  {{ $display_year = $parsed_end.Value | time.Format "Jan 2006" }}
+                {{ else }}
+                  {{ $display_year = substr (printf "%v" $end) 0 4 }}
+                {{ end }}
               {{ end }}
               <li class="flex items-start gap-3">
                 <span class="flex-shrink-0 mt-0.5 text-gray-500 dark:text-gray-400">

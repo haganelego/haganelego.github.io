@@ -1,0 +1,41 @@
+<script>
+(function() {
+  // Use View Transitions API if available (Chrome 111+, Edge 111+)
+  if (document.startViewTransition) {
+    // The CSS @view-transition { navigation: auto } handles MPA transitions
+    // in supported browsers. No additional JS needed for basic navigation.
+    return;
+  }
+
+  // Fallback: manual fade transition for browsers without View Transitions API
+  document.addEventListener('DOMContentLoaded', function() {
+    var pageBody = document.querySelector('.page-body');
+    if (pageBody) {
+      pageBody.classList.add('page-transition-fade');
+    }
+  });
+
+  // Fade out on navigation
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href]');
+    if (!link) return;
+
+    var href = link.getAttribute('href');
+    // Skip external links, anchors, and special links
+    if (!href || href.startsWith('#') || href.startsWith('http') ||
+        href.startsWith('mailto:') || link.target === '_blank') return;
+
+    e.preventDefault();
+    var pageBody = document.querySelector('.page-body');
+    if (pageBody) {
+      pageBody.style.transition = 'opacity 0.2s ease-in, transform 0.2s ease-in';
+      pageBody.style.opacity = '0';
+      pageBody.style.transform = 'translateY(-8px)';
+    }
+
+    setTimeout(function() {
+      window.location.href = href;
+    }, 200);
+  });
+})();
+</script>

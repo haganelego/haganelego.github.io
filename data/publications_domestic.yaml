@@ -1,0 +1,80 @@
+featured: []
+bibtex: |
+  @inproceedings{kanaoka2024manifoldnerf,
+    title={ManifoldNeRF: 視点変化に伴う特徴ベクトルの連続変化に着目したFew-shot NeRF},
+    author={金岡大樹 and 薗頭元春 and 田向権 and 川西康友},
+    booktitle={第26回画像の認識・理解シンポジウム(MIRU2023)},
+    note={OS5B-S4},
+    year={2023}
+  }
+
+  @inproceedings{kanaoka2024adversarial,
+    title={潜在拡散モデルによる画風の模倣を防ぐ敵対的摂動の高速生成},
+    author={金岡大樹 and 福田有輝也 and 田向権},
+    booktitle={第27回画像の認識・理解シンポジウム(MIRU2024)},
+    note={IS-2-077},
+    year={2024}
+  }
+
+  @article{fukuda2024dncnn,
+    title={DnCNN を用いた生成 AI に対する画像作品保護},
+    author={福田有輝也 and 金岡大樹 and 田向権},
+    journal={電子情報通信学会技術研究報告. PRMU, パターン認識・メディア理解},
+    volume={122},
+    number={404},
+    pages={116--121},
+    year={2024},
+    publisher={電子情報通信学会}
+  }
+
+  @article{yamao2023llm,
+    title={曖昧な言語指示に対応可能な大規模言語モデルを用いた動作計画システムの開発},
+    author={山尾晃世 and 金岡大樹 and 磯本航世 and 田向権},
+    journal={人工知能学会第二種研究会資料},
+    volume={2023},
+    number={Challenge-063},
+    pages={04},
+    year={2023},
+    publisher={一般社団法人 人工知能学会}
+  }
+
+  @inproceedings{kanaoka2021saes,
+    title={Open Set Recognition Using Hotelling's T2 Focusing on Multidimensional Feature Space in Deep Neural Networks},
+    author={Kanaoka, Daiju and Tanaka, Yuichiro and Tamukoh, Hakaru},
+    booktitle={9th International Symposium on Applied Engineering and Science (SAES2021)},
+    year={2021}
+  }
+
+  @article{kanaoka2021prmu,
+    title={多次元特徴空間に着目したオープンセット認識手法の開発},
+    author={金岡大樹 and 田中悠一朗 and 田向権},
+    journal={電子情報通信学会技術研究報告; 信学技報},
+    volume={121},
+    number={284},
+    pages={11--14},
+    year={2021},
+    publisher={電子情報通信学会}
+  }
+
+  @inproceedings{kanaoka2021sisa,
+    title={Object Recognition Using Tactile Information and Its Application to Service Robots},
+    author={Kanaoka, Daiju and Ishida, Yutaro and Tamukoh, Hakaru},
+    booktitle={Proc. of Int. Workshop on Smart Info-Media Systems in Asia (SISA2020)},
+    year={2020}
+  }
+
+  @inproceedings{kanaoka2020saes,
+    title={Object Recognition Using Tactile Information in Service Robots},
+    author={Kanaoka, Daiju and Ishida, Yutaro and Tamukoh, Hakaru},
+    booktitle={8th International Symposium on Applied Engineering and Science (SAES2020)},
+    year={2020}
+  }
+
+  @inproceedings{kanaoka2019soft,
+    title={ホームサービスロボットにおける触覚情報を用いた物体認識},
+    author={金岡大樹 and 石田裕太郎 and 田向権},
+    booktitle={SOFT九州支部夏季ワークショップ2019in福岡},
+    pages={18},
+    year={2019},
+    note={学生優秀ポスター発表賞}
+  }

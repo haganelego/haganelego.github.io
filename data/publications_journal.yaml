@@ -1,0 +1,25 @@
+featured:
+  - kanaoka2025simple
+  - ono2022wrs
+bibtex: |
+  @article{kanaoka2025simple,
+    title={Simple open-set recognition combining metric learning and anomaly detection},
+    author={Kanaoka, Daiju and Tanaka, Yuichiro and Tamukoh, Hakaru},
+    journal={Advanced Robotics},
+    volume={39},
+    number={7},
+    pages={368--382},
+    year={2025},
+    publisher={Taylor \& Francis}
+  } 
+
+  @article{ono2022wrs,
+    title={Solution of World Robot Challenge 2020 Partner Robot Challenge (Real Space)},
+    author={Ono, Tomohiro and Kanaoka, Daiju and Shiba, Tomoya and Tokuno, Shoshi and Yano, Yuga and Mizutani, Akinobu and Matsumoto, Ikuya and Amano, Hayato and Tamukoh, Hakaru},
+    journal={Advanced Robotics},
+    volume={36},
+    number={17-18},
+    pages={870--889},
+    year={2022},
+    publisher={Taylor \& Francis}
+  }

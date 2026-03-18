@@ -13,9 +13,10 @@ status:
   icon: ''
 role: Postdoctoral Researcher
 bio: |
-  I received the B.Eng and the M.Eng degree from Kyushu Institute of Technology, Japan, in 2020 and 2022.
-  I am currently a Ph.D. student in the graduate school of Life Science and Systems Engineering, Kyushu Institute of Technology.
-  My research interest includes object recognition, multimodal learning and domestic service robots.
+  Daiju Kanaoka received the B.Eng. and M.Eng. degrees from Kyushu Institute of Technology, Japan, in 2020 and 2022, and the Ph.D. degree in engineering from Kyushu Institute of Technology in 2025.
+  He is currently a Postdoctoral Researcher at RIKEN, Guardian Robot Project.
+  His research interests include multimodal learning, 3D reconstruction, human-robot interaction, and service robotics.
+  He is a member of the IEEE and RSJ.
 
 affiliations:
   - name: RIKEN
@@ -28,18 +29,28 @@ links:
     url: https://x.com/haganeLego
   - icon: brands/github
     url: https://github.com/haganelego
+  - icon: academicons/google-scholar
+    url: https://scholar.google.co.jp/citations?user=qtDXvy0AAAAJ&hl=ja&oi=ao
+    label: Google Scholar
+  - icon: hero/link
+    url: https://researchmap.jp/daiju-kanaoka
+    label: researchmap
 
 interests:
-  - Open-world Recognition
-  - Open-set Recognition
   - Multimodal Learning
-  - Neural Radiance Fields
+  - 3D Reconstruction
+  - Human-Robot Interaction
+  - Service Robotics
+  - Robot Vision
+  - AI Safety
 
 education:
   - degree: Doctor of Engineering
     institution: Kyushu Institute of Technology, Department of Life Science and Systems Engineering
     start: 2022-04-01
     end: 2025-09-30
+    summary: |
+      Completed coursework and withdrew in March 2025. Degree conferred in September 2025.
   - degree: Master of Engineering
     institution: Kyushu Institute of Technology, Department of Life Science and Systems Engineering
     start: 2020-04-01
@@ -50,11 +61,35 @@ education:
     end: 2020-03-31
 
 experience:
+  - role: Postdoctoral Researcher
+    org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
+    start: 2025-11-01
+    summary: ''
+  - role: Part-time Researcher
+    org: Kyushu Institute of Technology
+    start: 2025-04-01
+    summary: ''
+  - role: Research Associate
+    org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
+    start: 2025-05-01
+    end: 2025-10-31
+    summary: ''
+  - role: Research Part-time Worker I
+    org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
+    start: 2025-04-01
+    end: 2025-04-30
+    summary: ''
   - role: Research Trainee
     org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
     start: 2022-04-01
+    end: 2025-03-31
     summary: ''
-  - role: Executive Chairman
+  - role: Intern
+    org: OMRON
+    start: 2023-12-04
+    end: 2023-12-15
+    summary: ''
+  - role: Organizer
     org: The Committee of World Robot Olympiad Fukuoka Preliminary Round
     start: 2019-04-01
     summary: |

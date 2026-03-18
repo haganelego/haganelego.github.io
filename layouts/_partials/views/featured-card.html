@@ -1,0 +1,109 @@
+{{/* Featured publication card with optional thumbnail */}}
+{{ $item := .item }}
+{{ $has_attachments := partial "functions/has_attachments" $item }}
+
+{{/* Find thumbnail image: featured.* or thumbnail.* in page bundle */}}
+{{ $thumbnail := false }}
+{{ $images := $item.Resources.ByType "image" }}
+{{ range $images }}
+  {{ $name := .Name | lower }}
+  {{ if or (strings.HasPrefix $name "featured") (strings.HasPrefix $name "thumbnail") }}
+    {{ $thumbnail = . }}
+  {{ end }}
+{{ end }}
+
+{{ $year_value := $item.Params.event_start | default $item.Date }}
+{{ $year := (time $year_value).Format "2006" }}
+
+<div class="group relative rounded-xl border border-gray-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.02] shadow-sm hover:shadow-md hover:border-primary-300 dark:hover:border-primary-500/30 transition-all duration-300 overflow-hidden">
+  <div class="flex flex-col sm:flex-row">
+
+    {{/* Left: Thumbnail or Placeholder */}}
+    <div class="sm:w-72 md:w-96 lg:w-[28rem] flex-shrink-0">
+      <a href="{{ $item.RelPermalink }}" class="block h-full">
+        {{ if $thumbnail }}
+          {{ $resized := $thumbnail.Fit "896x560" }}
+          <img src="{{ $resized.RelPermalink }}"
+               alt="{{ $item.Title }}"
+               class="w-full h-48 sm:h-full object-contain bg-gray-50 dark:bg-gray-900/50 group-hover:scale-105 transition-transform duration-300" />
+        {{ else }}
+          <div class="w-full h-48 sm:h-full flex items-center justify-center bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/40 dark:to-primary-800/30">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-primary-400 dark:text-primary-500/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </div>
+        {{ end }}
+      </a>
+    </div>
+
+    {{/* Right: Details */}}
+    <div class="flex-1 p-5 sm:p-6 flex flex-col justify-between">
+      <div>
+        {{/* Venue badge */}}
+        {{ if $item.Params.publication_short }}
+        <div class="mb-2">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-primary-100 dark:bg-primary-800/30 text-primary-700 dark:text-primary-300">
+            {{ $item.Params.publication_short }}
+          </span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 ml-2">{{ $year }}</span>
+        </div>
+        {{ end }}
+
+        {{/* Title */}}
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white leading-snug mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+          <a href="{{ $item.RelPermalink }}" class="hover:underline">
+            {{ $item.Title }}
+          </a>
+        </h3>
+
+        {{/* Authors */}}
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+          {{- $authors := $item.Params.authors -}}
+          {{- if not (reflect.IsSlice $authors) -}}
+            {{- $authors = slice $authors -}}
+          {{- end -}}
+          {{ range $index, $raw := $authors }}
+            {{- $slug := $raw | urlize -}}
+            {{- $profile := partial "functions/get_author_profile" (dict "slug" $slug "title" $raw) -}}
+            {{- $display := $profile.title | default $raw -}}
+            {{- $is_me := $profile.is_owner | default false -}}
+            {{- if gt $index 0 }}, {{ end -}}
+            {{ if $is_me }}<strong>{{ $display }}</strong>{{ else }}{{ $display }}{{ end }}
+          {{- end -}}
+        </p>
+
+        {{/* Abstract excerpt */}}
+        {{ with $item.Params.abstract }}
+          {{ $abstract := printf "%v" . }}
+          {{ if gt (len $abstract) 0 }}
+          <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3 mb-3">
+            {{ $abstract | truncate 250 }}
+          </p>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{/* Actions */}}
+      <div class="flex flex-wrap items-center gap-2 pt-2">
+        <a href="{{ $item.RelPermalink }}"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Details
+        </a>
+        {{ if $item.Resources.GetMatch "cite.bib" }}
+        <a href="{{ ($item.Resources.GetMatch "cite.bib").RelPermalink }}"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+           download>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          BibTeX
+        </a>
+        {{ end }}
+      </div>
+    </div>
+
+  </div>
+</div>

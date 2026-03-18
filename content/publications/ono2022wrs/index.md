@@ -18,7 +18,7 @@ abstract: ""
 tags:
   - Service Robots
   - Robot Challenge
-featured: false
+featured: true
 projects: []
 slides: ""
 ---

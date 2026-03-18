@@ -1,0 +1,77 @@
+<style>
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Page transition: fade + slight slide */
+  @view-transition {
+    navigation: auto;
+  }
+
+  /* Fallback for browsers without View Transitions API */
+  .page-transition-fade {
+    animation: pageFadeIn 0.3s ease-out;
+  }
+
+  @keyframes pageFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* View Transition animations (for supported browsers) */
+  ::view-transition-old(page-content) {
+    animation: fadeSlideOut 0.25s ease-in forwards;
+  }
+
+  ::view-transition-new(page-content) {
+    animation: fadeSlideIn 0.3s ease-out;
+  }
+
+  @keyframes fadeSlideOut {
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Keep header stable during transitions */
+  .page-header {
+    view-transition-name: site-header;
+  }
+
+  .page-body {
+    view-transition-name: page-content;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    ::view-transition-old(page-content),
+    ::view-transition-new(page-content) {
+      animation: none;
+    }
+    .page-transition-fade {
+      animation: none;
+    }
+  }
+</style>

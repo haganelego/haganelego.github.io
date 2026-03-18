@@ -252,8 +252,54 @@
 {{ $text := "" }}
 {{ with index $content "text" }}{{ $text = printf "%v" . | emojify | $page.RenderString }}{{ end }}
 
-{{/* Two-column layout: left title, right content */}}
+{{/* Layout: stacked for featured-card, two-column for others */}}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  {{ if eq $view "featured-card" }}
+  {{/* Stacked layout: title on top, full-width content */}}
+  {{ if $title }}
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white">{{ $title }}</h2>
+    {{ with $text }}<p class="mt-3 text-gray-600 dark:text-gray-400">{{ . }}</p>{{ end }}
+    {{/* Archive link right below title */}}
+    {{ $archive_top := index $content "archive" }}
+    {{ if not (reflect.IsMap $archive_top) }}{{ $archive_top = dict }}{{ end }}
+    {{ $show_top := false }}
+    {{ if isset $archive_top "enable" }}
+      {{ $show_top = partial "functions/coerce_bool" (dict "value" (index $archive_top "enable") "default" false) }}
+    {{ end }}
+    {{ if $show_top }}
+      {{ $top_link := "" }}
+      {{ $top_link_raw := index $archive_top "link" }}
+      {{ if eq (printf "%T" $top_link_raw) "string" }}
+        {{ $top_link = strings.TrimSpace $top_link_raw }}
+      {{ end }}
+      {{ if $top_link }}
+        {{ $scheme := (urls.Parse $top_link).Scheme }}
+        {{ if not $scheme }}
+          {{ if not (hasPrefix $top_link "#") }}
+            {{ $top_link = $top_link | relLangURL }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $top_text := "" }}
+      {{ $top_text_raw := index $archive_top "text" }}
+      {{ if eq (printf "%T" $top_text_raw) "string" }}
+        {{ $top_text = strings.TrimSpace $top_text_raw }}
+      {{ end }}
+      {{ if not $top_text }}{{ $top_text = "See all" }}{{ end }}
+      {{ if $top_link }}
+      <div class="mt-3">
+        <a class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+           href="{{ $top_link | safeURL }}">
+          {{ $top_text }}
+        </a>
+      </div>
+      {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+  <div>
+  {{ else }}
   <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
 
     {{/* Left column: Title */}}
@@ -266,6 +312,7 @@
 
     {{/* Right column: Content */}}
     <div class="{{ if $title }}md:col-span-9{{ else }}md:col-span-12{{ end }}">
+  {{ end }}
 
       {{ $config := dict
           "columns" $columns
@@ -290,7 +337,7 @@
       {{ if isset $archive "enable" }}
         {{ $show_archive_link = partial "functions/coerce_bool" (dict "value" (index $archive "enable") "default" false) }}
       {{ end }}
-      {{ if $show_archive_link | and $archive_page }}
+      {{ if (and ($show_archive_link | and $archive_page) (ne $view "featured-card")) }}
         {{ $archive_link := "" }}
         {{ $archive_link_raw := index $archive "link" }}
         {{ if eq (printf "%T" $archive_link_raw) "string" }}
@@ -335,5 +382,5 @@
       {{ end }}
 
     </div>
-  </div>
+  {{ if ne $view "featured-card" }}</div>{{ end }}
 </div>
