@@ -19,9 +19,9 @@ hugoblox:
     # Schema.org type for structured data
     type: person                        # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: "Ph.D. Student at Kyushu Institute of Technology"
+    tagline: "Postdoctoral Researcher at RIKEN"
     # Site meta description for search engines and social sharing
-    description: "Daiju Kanaoka - Ph.D. student researching object recognition, multimodal learning, and domestic service robots at Kyushu Institute of Technology."
+    description: "Daiju Kanaoka (金岡大樹) - Postdoctoral Researcher at RIKEN. Research interests: multimodal learning, 3D reconstruction, human-robot interaction, service robotics, robot vision, and AI safety."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
       twitter: "haganeLego"              # Twitter/X handle for Twitter Cards (without @)

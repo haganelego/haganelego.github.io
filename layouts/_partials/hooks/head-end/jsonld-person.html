@@ -1,0 +1,35 @@
+{{/* JSON-LD structured data for Person (SEO) */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Daiju Kanaoka",
+  "alternateName": "金岡大樹",
+  "url": "{{ .Permalink }}",
+  "jobTitle": "Postdoctoral Researcher",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "RIKEN"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Kyushu Institute of Technology"
+  },
+  "sameAs": [
+    "https://scholar.google.co.jp/citations?user=qtDXvy0AAAAJ&hl=ja&oi=ao",
+    "https://researchmap.jp/daiju-kanaoka",
+    "https://github.com/haganelego",
+    "https://x.com/haganeLego"
+  ],
+  "knowsAbout": [
+    "Multimodal Learning",
+    "3D Reconstruction",
+    "Human-Robot Interaction",
+    "Service Robotics",
+    "Robot Vision",
+    "AI Safety"
+  ]
+}
+</script>
+{{ end }}

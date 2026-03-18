@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 # Website name (set in params.yaml under hugoblox.branding.name)
-title: ''
+title: 'Daiju KANAOKA'
 # Website URL
 baseURL: 'https://haganelego.github.io/'
 
@@ -13,7 +13,7 @@ baseURL: 'https://haganelego.github.io/'
 ############################
 
 defaultContentLanguage: en
-hasCJKLanguage: false
+hasCJKLanguage: true
 defaultContentLanguageInSubdir: false
 removePathAccents: true
 
