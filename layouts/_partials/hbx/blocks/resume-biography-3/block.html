@@ -213,15 +213,7 @@
             <p class="text-lg text-gray-600 dark:text-gray-400">({{ . }})</p>
           {{ end }}
 
-          {{ $role_text := "" }}
-          {{ with $profile.role }}
-            {{ if eq (printf "%T" .) "string" }}
-              {{ $role_text = . }}
-            {{ end }}
-          {{ end }}
-          {{ with $role_text }}
-            <p class="text-2xl font-semibold text-primary-600 dark:text-primary-400">{{ . | markdownify | emojify }}</p>
-          {{ end }}
+          {{/* Role hidden - shown in Affiliations section instead */}}
 
           {{ $affiliations_raw := $profile.affiliations }}
           {{ $affiliations := slice }}
@@ -393,6 +385,48 @@
               </a>
             </div>
           {{ end }}
+        {{ end }}
+
+        {{/* Current Affiliations */}}
+        {{ $author_data := index site.Data.authors $author }}
+        {{ $current_affiliations_raw := $author_data.current_affiliations }}
+        {{ $current_affiliations := slice }}
+        {{ if reflect.IsSlice $current_affiliations_raw }}
+          {{ $current_affiliations = $current_affiliations_raw }}
+        {{ end }}
+
+        {{ if gt (len $current_affiliations) 0 }}
+        <div class="mb-12">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-full flex items-center justify-center">
+              {{ partial "functions/get_icon" (dict "name" "hero/building-office-2" "attributes" "class='w-6 h-6 text-primary-600 dark:text-primary-400'") }}
+            </div>
+            {{ $affiliations_heading := i18n "current_affiliations" | default "Affiliations" }}
+            {{ $affiliations_heading_raw := index $headings "affiliations" }}
+            {{ if eq (printf "%T" $affiliations_heading_raw) "string" }}
+              {{ $affiliations_heading_raw = strings.TrimSpace $affiliations_heading_raw }}
+              {{ if ne $affiliations_heading_raw "" }}
+                {{ $affiliations_heading = $affiliations_heading_raw }}
+              {{ end }}
+            {{ end }}
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">{{ $affiliations_heading }}</h2>
+          </div>
+          <div class="space-y-2">
+            {{ range $current_affiliations }}
+            {{ if reflect.IsMap . }}
+              {{ $aff_role := "" }}
+              {{ $aff_org := "" }}
+              {{ $aff_url := "" }}
+              {{ with index . "role" }}{{ $aff_role = strings.TrimSpace (printf "%v" .) }}{{ end }}
+              {{ with index . "org" }}{{ $aff_org = strings.TrimSpace (printf "%v" .) }}{{ end }}
+              {{ with index . "url" }}{{ $aff_url = strings.TrimSpace (printf "%v" .) }}{{ end }}
+              {{ if or $aff_role $aff_org }}
+              <p class="text-base"><span class="font-semibold text-primary-600 dark:text-primary-400">{{ $aff_role }}</span>{{ if and $aff_role $aff_org }}<span class="text-gray-400 dark:text-gray-500 mx-1.5">/</span><span class="text-gray-600 dark:text-gray-400">{{ $aff_org }}</span>{{ if $aff_url }} <a href="{{ $aff_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-0.5 text-xs font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>HP</a>{{ end }}{{ end }}</p>
+              {{ end }}
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
         {{ end }}
 
         {{/* Interests & Education - Side by Side (al-folio style) */}}

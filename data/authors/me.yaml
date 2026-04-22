@@ -18,8 +18,16 @@ bio: |
   His research interests include multimodal learning, 3D reconstruction, human-robot interaction, and service robotics.
   He is a member of the IEEE and RSJ.
 
-affiliations:
-  - name: RIKEN
+affiliations: []
+
+current_affiliations:
+  - role: Postdoctoral Researcher
+    org: RIKEN, Guardian Robot Project
+  - role: Part-time Researcher
+    org: Kyushu Institute of Technology
+  - role: Board Chair
+    org: NPO Fukuoka Robotics Challenge
+    url: https://fukuokarc.org/
 
 links:
   - icon: at-symbol
@@ -84,6 +92,10 @@ experience:
     start: 2022-04-01
     end: 2025-03-31
     summary: ''
+  - role: Board Chair
+    org: NPO Fukuoka Robotics Challenge
+    start: 2023-09-01
+    summary: ''
   - role: Intern
     org: OMRON
     start: 2023-12-04
@@ -95,17 +107,11 @@ experience:
     summary: |
       World Robot Olympiad is one of the biggest robot competitions for children.
 
-# skills: []
-#
-# languages:
-#   - name: Japanese
-#     level: 5
-#     label: Native
-#   - name: English
-#     level: 3
-#     label: Intermediate
-#
 awards:
+  - title: "PRMU Monthly Best Presentation Award, FY2023"
+    awarder: IEICE PRMU
+    date: "2024-03-01"
+    icon: hero/trophy
   - title: "RoboCupJapanOpen 2022, @Home league, Domestic Standard Platform, 1st place"
     awarder: RoboCup
     date: "2023-01-01"
@@ -142,3 +148,11 @@ awards:
     awarder: World Robot Olympiad
     date: "2015-09-01"
     icon: hero/trophy
+
+patents:
+  - title: "画像認識装置および画像認識方法"
+    inventors: "金岡 大樹, 田向 権, 田中 悠一朗"
+    applicant: "国立大学法人九州工業大学"
+    number: "特願2021-185971 / 特開2023-073127"
+    date: "2021-11-15"
+    icon: hero/document-text

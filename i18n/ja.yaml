@@ -1,0 +1,12 @@
+about_me: "自己紹介"
+current_affiliations: "所属"
+interests: "研究分野"
+education: "学歴"
+experience: "経歴"
+present: "現在"
+see_certificate: "証明書を見る"
+pub_journal: "学術論文誌"
+pub_international: "国際会議"
+pub_domestic: "国内学会・シンポジウム・ワークショップ"
+pub_misc: "arXiv / その他"
+pub_intro: '詳細は<a href="https://scholar.google.co.jp/citations?user=qtDXvy0AAAAJ&hl=ja&oi=ao" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Google Scholar</a>または<a href="https://researchmap.jp/daiju-kanaoka" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">researchmap</a>をご覧ください。'

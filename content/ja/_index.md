@@ -11,7 +11,7 @@ sections:
   - block: resume-biography-3
     id: about
     content:
-      username: me
+      username: me_ja
       text: ''
     design:
       name:
@@ -22,7 +22,7 @@ sections:
   - block: collection
     id: publications
     content:
-      title: Featured Publications
+      title: 主要業績
       text: ''
       count: 0
       filters:
@@ -31,24 +31,24 @@ sections:
         featured_only: true
       archive:
         enable: true
-        text: See all publications →
+        text: すべての業績を見る →
         link: /publications/
     design:
       view: featured-card
   - block: resume-experience
     id: experience
     content:
-      username: me
+      username: me_ja
     design:
-      date_format: 'January 2006'
+      date_format: '2006年1月'
   - block: resume-awards
     id: awards
     content:
-      title: Awards
-      username: me
+      title: 受賞歴
+      username: me_ja
   - block: resume-patents
     id: patents
     content:
-      title: Patents
-      username: me
+      title: 特許
+      username: me_ja
 ---

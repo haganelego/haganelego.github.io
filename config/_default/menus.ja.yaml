@@ -1,15 +1,15 @@
-# Navigation Links (English - default language)
+# Navigation Links (Japanese)
 
 main:
-  - name: About
+  - name: 概要
     url: /#about
     weight: 10
-  - name: Publications
+  - name: 業績
     url: /#publications
     weight: 20
-  - name: Experience
+  - name: 経歴
     url: /#experience
     weight: 30
-  - name: Awards
+  - name: 受賞
     url: /#awards
     weight: 40

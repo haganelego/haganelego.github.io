@@ -1,16 +1,26 @@
 {{/* JSON-LD structured data for Person (SEO) */}}
 {{ if .IsHome }}
+{{ $name := "Daiju Kanaoka" }}
+{{ $alternateName := "金岡大樹" }}
+{{ $jobTitle := "Postdoctoral Researcher" }}
+{{ $orgName := "RIKEN" }}
+{{ if eq .Lang "ja" }}
+  {{ $name = "金岡大樹" }}
+  {{ $alternateName = "Daiju Kanaoka" }}
+  {{ $jobTitle = "特別研究員" }}
+  {{ $orgName = "理化学研究所" }}
+{{ end }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Daiju Kanaoka",
-  "alternateName": "金岡大樹",
+  "name": "{{ $name }}",
+  "alternateName": "{{ $alternateName }}",
   "url": "{{ .Permalink }}",
-  "jobTitle": "Postdoctoral Researcher",
+  "jobTitle": "{{ $jobTitle }}",
   "worksFor": {
     "@type": "Organization",
-    "name": "RIKEN"
+    "name": "{{ $orgName }}"
   },
   "alumniOf": {
     "@type": "CollegeOrUniversity",

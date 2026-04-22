@@ -1,1 +1,12 @@
 about_me: "About Me"
+current_affiliations: "Affiliations"
+interests: "Interests"
+education: "Education"
+experience: "Experience"
+present: "Present"
+see_certificate: "See certificate"
+pub_journal: "Journal Papers"
+pub_international: "International Conferences"
+pub_domestic: "Domestic Conferences, Symposiums & Workshops"
+pub_misc: "arXiv / MISC"
+pub_intro: 'For more details, please refer to my <a href="https://scholar.google.co.jp/citations?user=qtDXvy0AAAAJ&hl=ja&oi=ao" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Google Scholar</a> or <a href="https://researchmap.jp/daiju-kanaoka" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">researchmap</a>.'
