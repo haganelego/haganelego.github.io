@@ -22,8 +22,11 @@
     <div class="sm:w-72 md:w-96 lg:w-[28rem] flex-shrink-0">
       <a href="{{ $item.RelPermalink }}" class="block h-full">
         {{ if $thumbnail }}
-          {{ $resized := $thumbnail.Fit "896x560" }}
-          <img src="{{ $resized.RelPermalink }}"
+          {{ $src := $thumbnail.RelPermalink }}
+          {{ if ne $thumbnail.MediaType.SubType "svg" }}
+            {{ $src = ($thumbnail.Fit "896x560").RelPermalink }}
+          {{ end }}
+          <img src="{{ $src }}"
                alt="{{ $item.Title }}"
                class="w-full h-48 sm:h-full object-contain bg-gray-50 dark:bg-gray-900/50 group-hover:scale-105 transition-transform duration-300" />
         {{ else }}
@@ -62,11 +65,14 @@
           {{- if not (reflect.IsSlice $authors) -}}
             {{- $authors = slice $authors -}}
           {{- end -}}
+          {{/* Site owner's name spellings, from data/achievements/meta.yaml (generated) */}}
+          {{- $owners := slice -}}
+          {{- with site.Data.achievements -}}{{- with .meta -}}{{- $owners = .owner_names | default slice -}}{{- end -}}{{- end -}}
           {{ range $index, $raw := $authors }}
             {{- $slug := $raw | urlize -}}
             {{- $profile := partial "functions/get_author_profile" (dict "slug" $slug "title" $raw) -}}
             {{- $display := $profile.title | default $raw -}}
-            {{- $is_me := $profile.is_owner | default false -}}
+            {{- $is_me := or ($profile.is_owner | default false) (in $owners $raw) -}}
             {{- if gt $index 0 }}, {{ end -}}
             {{ if $is_me }}<strong>{{ $display }}</strong>{{ else }}{{ $display }}{{ end }}
           {{- end -}}

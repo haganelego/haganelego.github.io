@@ -22,13 +22,12 @@ sections:
   - block: collection
     id: publications
     content:
-      title: Featured Publications
+      title: Recent Publications
       text: ''
-      count: 0
+      count: 5
       filters:
         folders:
           - publications
-        featured_only: true
       archive:
         enable: true
         text: See all publications →

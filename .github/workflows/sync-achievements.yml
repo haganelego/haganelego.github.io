@@ -1,0 +1,126 @@
+name: Sync achievements
+
+# Regenerates data/achievements/*.yaml and content/**/publications/<slug>/ from the
+# private kanaoka-lab/lab-achievements repository, commits the result to main and
+# starts the deploy. Nothing else on the site is touched (bio, experience, ... stay
+# hand-maintained).
+#
+# Required secret: ACHIEVEMENTS_READ_TOKEN
+#   Fine-grained PAT, resource owner kanaoka-lab, repository lab-achievements only,
+#   permission "Contents: Read". Expires after at most one year; renew it there.
+
+on:
+  schedule:
+    - cron: '0 18 * * *'   # daily 03:00 JST
+  workflow_dispatch:       # manual run, or `gh workflow run` from lab-achievements CI
+
+permissions:
+  contents: write          # push the generated files
+  actions: write           # start deploy.yml afterwards
+
+concurrency:
+  group: sync-achievements
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  sync:
+    if: github.repository_owner != 'HugoBlox'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - name: Checkout site
+      uses: actions/checkout@v4
+      with:
+        ref: main
+
+    - name: Checkout achievement source data (read-only)
+      uses: actions/checkout@v4
+      with:
+        repository: kanaoka-lab/lab-achievements
+        token: ${{ secrets.ACHIEVEMENTS_READ_TOKEN }}
+        path: _achievements
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install lab-achievements tools
+      run: pip install ./_achievements
+
+    - name: Generate site files
+      run: python -m tools.export_hugoblox --root _achievements --site .
+
+    - name: Guard against private field leakage
+      run: |
+        ! grep -rEq "file_id|item_id|review_status|created_by" data/achievements content/publications content/ja/publications
+
+    - name: Detect changes
+      id: diff
+      run: |
+        git add -A data/achievements content/publications content/ja/publications
+        if git diff --cached --quiet; then
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+          echo "Site already up to date."
+        else
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          git diff --cached --stat
+        fi
+
+    # --- Smoke build: never commit something Hugo cannot build -------------------
+    - name: Setup Node.js
+      if: steps.diff.outputs.changed == 'true'
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Setup pnpm
+      if: steps.diff.outputs.changed == 'true'
+      uses: pnpm/action-setup@v4
+
+    - name: Install site dependencies
+      if: steps.diff.outputs.changed == 'true'
+      run: pnpm install --no-frozen-lockfile
+
+    - name: Get Hugo Version
+      if: steps.diff.outputs.changed == 'true'
+      run: |
+        YQ_VERSION="v4.44.1"
+        wget -q --tries=3 --waitretry=1 -O /tmp/yq \
+          "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
+        sudo mv /tmp/yq /usr/local/bin/yq && sudo chmod +x /usr/local/bin/yq
+        VERSION=$(yq '.build.hugo_version // .hugo_version // ""' hugoblox.yaml 2>/dev/null | grep -v '^null$' || true)
+        VERSION=${VERSION:-0.154.5}
+        echo "HUGO_VERSION=$VERSION" >> "$GITHUB_ENV"
+
+    - name: Setup Hugo
+      if: steps.diff.outputs.changed == 'true'
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: ${{ env.HUGO_VERSION }}
+        extended: true
+
+    - name: Build with Hugo (smoke test)
+      if: steps.diff.outputs.changed == 'true'
+      env:
+        HUGO_ENVIRONMENT: production
+      run: hugo --minify --printPathWarnings
+
+    # --- Commit, push, deploy ------------------------------------------------------
+    - name: Commit and push
+      if: steps.diff.outputs.changed == 'true'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git commit -m "Sync achievements from lab-achievements ($(date -u +%Y-%m-%d))"
+        git push origin HEAD:main
+
+    - name: Start deploy
+      # A push made with GITHUB_TOKEN does not trigger `push` workflows, so start it explicitly.
+      if: steps.diff.outputs.changed == 'true'
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh workflow run deploy.yml --ref main

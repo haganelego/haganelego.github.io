@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "hugo server --disableFastRender",
     "build": "hugo --minify && pnpm run pagefind",
-    "pagefind": "pagefind --site public"
+    "pagefind": "pagefind --site public",
+    "sync": "sh scripts/sync-achievements.sh",
+    "sync:check": "sh scripts/sync-achievements.sh --check"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",

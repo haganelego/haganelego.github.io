@@ -1,7 +1,10 @@
-@inproceedings{kanaoka2023bmvc,
-  title={ManifoldNeRF: View-dependent Image Feature Supervision for Few-shot Neural Radiance Fields},
-  author={Kanaoka, Daiju and Sonogashira, Motoharu and Tamukoh, Hakaru and Kawanishi, Yasutomo},
-  booktitle={34th British Machine Vision Conference (BMVC2023)},
-  year={2023},
-  publisher={BMVA}
+@inproceedings{Kanaoka2023Manifoldnerf,
+  title     = {{ManifoldNeRF: View-dependent Image Feature Supervision for Few-shot Neural Radiance Fields}},
+  author    = {Daiju Kanaoka and Motoharu Sonogashira and Hakaru Tamukoh and Yasutomo Kawanishi},
+  booktitle = {Proceedings of the 34th British Machine Vision Conference (BMVC2023)},
+  year      = {2023},
+  month     = {nov},
+  publisher = {BMVA Press},
+  url       = {https://github.com/haganelego/ManifoldNeRF_BMVC2023},
+  abstract  = {Novel view synthesis has recently made significant progress with the advent of Neural Radiance Fields (NeRF). DietNeRF is an extension of NeRF that aims to achieve this task from only a few images by introducing a new loss function for unknown viewpoints with no input images. The loss function assumes that a pre-trained feature extractor should output the same feature even if input images are captured at different viewpoints since the images contain the same object. However, while that assumption is ideal, in reality, it is known that as viewpoints continuously change, also feature vectors continuously change. Thus, the assumption can harm training. To avoid this harmful training, we propose ManifoldNeRF, a method for supervising feature vectors at unknown viewpoints using interpolated features from neighboring known viewpoints. Since the method provides appropriate supervision for each unknown viewpoint by the interpolated features, the volume representation is learned better than DietNeRF. Experimental results show that the proposed method performs better than others in a complex scene. We also experimented with several subsets of viewpoints from a set of viewpoints and identified an effective set of viewpoints for real environments. This provided a basic policy of viewpoint patterns for real-world application.}
 }

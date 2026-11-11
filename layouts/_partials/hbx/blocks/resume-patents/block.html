@@ -1,50 +1,15 @@
-{{/* Hugo Blox: Patents - Same layout as Awards */}}
+{{/* Hugo Blox: Patents - Same layout as Awards.
+     Data source: data/achievements/patents.yaml (generated from lab-achievements).
+     Renders nothing when no patent is visible in the current language. */}}
 
 {{/* Initialise */}}
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 {{ $content := $block.content }}
 {{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
-{{ $design := $block.design }}
-{{ if not (reflect.IsMap $design) }}{{ $design = dict }}{{ end }}
 
-{{ $username := "me" }}
-{{ $username_raw := index $content "username" }}
-{{ if eq (printf "%T" $username_raw) "string" }}
-  {{ $username = strings.TrimSpace $username_raw }}
-{{ end }}
-{{ $author_data := index site.Data.authors $username }}
-{{ $patents_raw := $author_data.patents }}
-
-{{ $patents_iter := slice }}
-{{ if reflect.IsSlice $patents_raw }}
-  {{ $patents_iter = $patents_raw }}
-{{ end }}
-
-{{ $patents := slice }}
-{{ range $patents_iter }}
-  {{ if reflect.IsMap . }}
-    {{ $title := "" }}
-    {{ $inventors := "" }}
-    {{ $applicant := "" }}
-    {{ $number := "" }}
-    {{ $date := "" }}
-    {{ $icon := "" }}
-    {{ $url := "" }}
-
-    {{ with index . "title" }}{{ $title = strings.TrimSpace (printf "%v" .) }}{{ end }}
-    {{ with index . "inventors" }}{{ $inventors = strings.TrimSpace (printf "%v" .) }}{{ end }}
-    {{ with index . "applicant" }}{{ $applicant = strings.TrimSpace (printf "%v" .) }}{{ end }}
-    {{ with index . "number" }}{{ $number = strings.TrimSpace (printf "%v" .) }}{{ end }}
-    {{ with index . "date" }}{{ $date = strings.TrimSpace (printf "%v" .) }}{{ end }}
-    {{ with index . "icon" }}{{ $icon = strings.TrimSpace (printf "%v" .) }}{{ end }}
-    {{ with index . "url" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
-
-    {{ if $title }}
-      {{ $patents = $patents | append (dict "title" $title "inventors" $inventors "applicant" $applicant "number" $number "date" $date "icon" $icon "url" $url) }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+{{ $ach := site.Data.achievements | default dict }}
+{{ $patents := partial "achievements/visible.html" ($ach.patents | default slice) }}
 
 {{ $title := "" }}
 {{ $title_raw := index $content "title" }}
@@ -52,6 +17,7 @@
   {{ $title = strings.TrimSpace (printf "%v" $title_raw) }}
 {{ end }}
 
+{{ if gt (len $patents) 0 }}
 {{/* Two-column layout: left title, right content */}}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
@@ -66,36 +32,34 @@
     {{/* Right column: Patents */}}
     <div class="md:col-span-9">
       <div class="flex flex-col gap-6">
-        {{ range $patents }}
+        {{ range $patent := $patents }}
+        {{ $numbers := slice }}
+        {{ with $patent.application_number }}{{ $numbers = $numbers | append . }}{{ end }}
+        {{ with $patent.publication_number }}{{ $numbers = $numbers | append . }}{{ end }}
+        {{ with $patent.registration_number }}{{ $numbers = $numbers | append . }}{{ end }}
+        {{ $status := i18n (printf "patent_status_%s" $patent.status) | default $patent.status }}
+        {{ $patent_url := $patent.url }}
+        {{ $patent_target := "" }}
+        {{ if $patent_url }}
+          {{ $scheme := (urls.Parse $patent_url).Scheme }}
+          {{ if in (slice "http" "https") $scheme }}{{ $patent_target = "target=\"_blank\" rel=\"noopener\"" }}{{ end }}
+        {{ end }}
         <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          {{ $patent_url := index . "url" }}
-          {{ $patent_link := "" }}
-          {{ $patent_target := "" }}
-          {{ if $patent_url }}
-            {{ $patent_link = $patent_url }}
-            {{ $scheme := (urls.Parse $patent_link).Scheme }}
-            {{ if and $scheme (in (slice "http" "https") $scheme) }}
-              {{ $patent_target = "target=\"_blank\" rel=\"noopener\"" }}
-            {{ end }}
-          {{ end }}
-          {{ if $patent_link }}<a href="{{ $patent_link | safeURL }}" {{ $patent_target | safeHTMLAttr }}>{{ end }}
+          {{ if $patent_url }}<a href="{{ $patent_url | safeURL }}" {{ $patent_target | safeHTMLAttr }}>{{ end }}
             <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
-              {{ with index . "icon" }}
-                <span class="inline-flex items-center justify-center w-7 h-7 text-primary-600 dark:text-primary-300">
-                  {{ partial "functions/get_icon" (dict "name" . "attributes" "class='w-6 h-6'") }}
-                </span>
-              {{ end }}
-              <span>{{ index . "title" | markdownify }}</span>
+              <span class="inline-flex items-center justify-center w-7 h-7 text-primary-600 dark:text-primary-300">
+                {{ partial "functions/get_icon" (dict "name" "hero/document-text" "attributes" "class='w-6 h-6'") }}
+              </span>
+              <span>{{ $patent.title }}</span>
             </h5>
-          {{ if $patent_link }}</a>{{ end }}
+          {{ if $patent_url }}</a>{{ end }}
 
-          {{ with index . "inventors" }}
-          <div class="block mb-1 text-sm font-normal text-gray-600 dark:text-gray-300">{{ . }}</div>
-          {{ end }}
+          <div class="block mb-1 text-sm font-normal text-gray-600 dark:text-gray-300">{{ delimit $patent.inventors ", " }}</div>
 
           <div class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
-            {{ with index . "applicant" }}{{ . }} &#8729;{{ end }}
-            {{ with index . "number" }}{{ . }}{{ end }}
+            {{ with $patent.applicants }}{{ delimit . ", " }} &#8729;{{ end }}
+            {{ if $numbers }}{{ delimit $numbers " / " }} &#8729;{{ end }}
+            {{ $status }}
           </div>
         </div>
         {{ end }}
@@ -104,3 +68,4 @@
 
   </div>
 </div>
+{{ end }}

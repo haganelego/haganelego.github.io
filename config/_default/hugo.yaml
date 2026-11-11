@@ -33,6 +33,8 @@ cascade:
 
 build:
   writeStats: true
+# Accepted papers are dated by publication month, which may lie in the future.
+buildFuture: true
 enableGitInfo: false
 summaryLength: 30
 pagination:
