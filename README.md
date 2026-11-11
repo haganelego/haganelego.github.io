@@ -23,11 +23,29 @@ GitHub Pages に `main` ブランチから自動デプロイされる（`.github
 
 lab-achievements 側の CI にも、`main` への push 後にこのワークフローを起動する任意ステップがある（secret `WEBSITE_DISPATCH_TOKEN`）。
 
-#### 必要な secret（この repo の Settings → Secrets and variables → Actions）
+#### 必要な secret: `ACHIEVEMENTS_READ_TOKEN`
 
-- `ACHIEVEMENTS_READ_TOKEN`: Fine-grained personal access token。Resource owner は `kanaoka-lab`、対象リポジトリは `lab-achievements` のみ、権限は **Contents: Read** だけ。
-  有効期限は最長 1 年なので、切れたら作り直して差し替える（切れると同期がエラーで止まるだけで、サイトは最後の状態のまま公開され続ける）。
+lab-achievements（private）を CI から読むための Fine-grained personal access token。**有効期限は最長 1 年**で、切れると「Sync achievements」が checkout の段階で失敗し（`Actions` タブに赤く残る）、サイトは最後に同期した状態のまま公開され続ける。
+期限が来たら以下の手順で作り直して差し替える（トークンの値以外は秘密情報ではない）。
+
+1. GitHub 右上のアイコン → **Settings** → 左下 **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**
+2. 次のとおり設定する
+   - Token name: `haganelego.github.io achievements sync`（任意）
+   - Expiration: 最長の 1 year（カレンダーに更新予定を入れておく）
+   - Resource owner: **kanaoka-lab**（個人アカウントではなく組織を選ぶ）
+   - Repository access: **Only select repositories** → `kanaoka-lab/lab-achievements`
+   - Permissions → Repository permissions → **Contents: Read-only**。他はすべて No access のまま（Metadata は自動で Read-only になる）
+3. **Generate token** を押し、表示された値をコピーする（この画面を閉じると二度と見られない）
+4. この repo の **Settings → Secrets and variables → Actions** → `ACHIEVEMENTS_READ_TOKEN` の鉛筆アイコン（初回は New repository secret）→ 値を貼り付けて保存
+5. **Actions** タブ → **Sync achievements** → **Run workflow** → `main` で一度実行し、緑で終わることを確認する（差分が無ければ "Site already up to date." で終わる）
+6. 古いトークンは Developer settings の一覧から削除してよい
+
+組織側で fine-grained token の利用が「要承認」になっている場合、手順 3 の直後に kanaoka-lab の **Settings → Personal access tokens → Pending requests** で承認が必要になる。
+
+#### その他の運用メモ
+
 - GitHub は 60 日間 repo に push が無いと `schedule` を自動停止する。その場合は Actions タブで「Sync achievements」を一度手動実行すると再開する。
+- lab-achievements 側から即時に同期を起動したい場合は、この repo に **Actions: Read and write** の fine-grained token（手順は上と同じで対象リポジトリをこの repo にする）を作り、lab-achievements の secret `WEBSITE_DISPATCH_TOKEN` に登録する。無くても毎日同期される。
 
 ### 業績の見せ方を変える（`achievements.yaml`）
 
