@@ -11,7 +11,7 @@ name: Sync achievements
 
 on:
   schedule:
-    - cron: '0 18 * * *'   # daily 03:00 JST
+    - cron: '0 18 * * 0'   # weekly, Monday 03:00 JST
   workflow_dispatch:       # manual run, or `gh workflow run` from lab-achievements CI
 
 permissions:
@@ -31,6 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+    - name: Keep the schedule alive
+      # GitHub disables scheduled workflows after 60 days without repository
+      # activity. Re-enabling this workflow through the API counts as activity,
+      # so every run (even one that changes nothing) resets that timer.
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/sync-achievements.yml/enable"
+
     - name: Checkout site
       uses: actions/checkout@v4
       with:

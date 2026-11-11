@@ -7,14 +7,14 @@ GitHub Pages に `main` ブランチから自動デプロイされる（`.github
 
 | 内容 | 更新方法 | 置き場所 |
 |---|---|---|
-| 論文・受賞・特許 | **自動**。業績データ repo [kanaoka-lab/lab-achievements](https://github.com/kanaoka-lab/lab-achievements) から毎日生成してコミット | `data/achievements/*.yaml`、`content/publications/<slug>/`、`content/ja/publications/<slug>/`（**手で編集しない**） |
+| 論文・受賞・特許 | **自動**。業績データ repo [kanaoka-lab/lab-achievements](https://github.com/kanaoka-lab/lab-achievements) から週 1 回生成してコミット（Actions から手動実行も可） | `data/achievements/*.yaml`、`content/publications/<slug>/`、`content/ja/publications/<slug>/`（**手で編集しない**） |
 | 自己紹介・所属・経歴・学歴・リンク | 手動で編集して `main` に push | `data/authors/me.yaml`、`data/authors/me_ja.yaml` |
 | 業績の見せ方（節の分け方、詳細ページを作る種別、除外、URL） | 手動 | `achievements.yaml` |
 | 見出しの文言 | 手動 | `i18n/en.yaml`、`i18n/ja.yaml` |
 
 ### 自動同期の流れ（`.github/workflows/sync-achievements.yml`）
 
-毎日 03:00 JST（または Actions タブから手動実行）に、
+毎週月曜 03:00 JST（または Actions タブから手動実行）に、
 
 1. `kanaoka-lab/lab-achievements` を読み取り専用トークンで checkout
 2. `python -m tools.export_hugoblox --root _achievements --site .` でサイト用ファイルを生成
@@ -44,8 +44,8 @@ lab-achievements（private）を CI から読むための Fine-grained personal 
 
 #### その他の運用メモ
 
-- GitHub は 60 日間 repo に push が無いと `schedule` を自動停止する。その場合は Actions タブで「Sync achievements」を一度手動実行すると再開する。
-- lab-achievements 側から即時に同期を起動したい場合は、この repo に **Actions: Read and write** の fine-grained token（手順は上と同じで対象リポジトリをこの repo にする）を作り、lab-achievements の secret `WEBSITE_DISPATCH_TOKEN` に登録する。無くても毎日同期される。
+- GitHub は 60 日間 repo に活動が無いと `schedule` を自動停止するが、このワークフローは実行のたびに API で自分自身を再有効化して活動扱いにするので、週 1 回の実行が続く限り止まらない。万一 Actions タブで「This scheduled workflow is disabled」と表示されたら、「Sync achievements」を一度手動実行すれば再開する。
+- lab-achievements 側から即時に同期を起動したい場合は、この repo に **Actions: Read and write** の fine-grained token（手順は上と同じで対象リポジトリをこの repo にする）を作り、lab-achievements の secret `WEBSITE_DISPATCH_TOKEN` に登録する。無くても週 1 回同期される。
 
 ### 業績の見せ方を変える（`achievements.yaml`）
 
