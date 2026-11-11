@@ -40,14 +40,4 @@ sections:
       username: me_ja
     design:
       date_format: '2006年1月'
-  - block: resume-awards
-    id: awards
-    content:
-      title: 受賞歴
-      username: me_ja
-  - block: resume-patents
-    id: patents
-    content:
-      title: 特許
-      username: me_ja
 ---

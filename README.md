@@ -68,5 +68,5 @@ clone の場所が違う場合は `ACHIEVEMENTS_ROOT=/path/to/lab-achievements p
 ## 構成メモ
 
 - Hugo のバージョンは `hugoblox.yaml` の `build.hugo_version`。テーマモジュールは `_vendor/` に vendoring 済み。
-- `layouts/publications/list.html` が業績一覧ページ、`layouts/_partials/hbx/blocks/resume-awards|resume-patents/` がトップの受賞・特許ブロック。いずれも `site.Data.achievements.*` だけを読む。
+- `layouts/publications/list.html` が業績一覧ページ（論文・受賞・特許）で、`site.Data.achievements.*` だけを読む。トップの「Recent Publications」はテーマの collection block（`content/_index.md`）。メニューの「Awards」は業績ページの受賞節へのリンク。
 - `layouts/_partials/achievements/visible.html` が言語による除外を一か所で行う。
