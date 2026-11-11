@@ -22,13 +22,12 @@ sections:
   - block: collection
     id: publications
     content:
-      title: Featured Publications
+      title: Recent Publications
       text: ''
-      count: 0
+      count: 5
       filters:
         folders:
           - publications
-        featured_only: true
       archive:
         enable: true
         text: See all publications →
@@ -41,14 +40,4 @@ sections:
       username: me
     design:
       date_format: 'January 2006'
-  - block: resume-awards
-    id: awards
-    content:
-      title: Awards
-      username: me
-  - block: resume-patents
-    id: patents
-    content:
-      title: Patents
-      username: me
 ---

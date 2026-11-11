@@ -1,4 +1,4 @@
-# Navigation Links (English - default language)
+# Navigation Links (English)
 
 main:
   - name: About
@@ -11,5 +11,5 @@ main:
     url: /#experience
     weight: 30
   - name: Awards
-    url: /#awards
+    url: /publications/#awards
     weight: 40

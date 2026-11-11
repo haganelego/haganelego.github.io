@@ -1,0 +1,22 @@
+{{/*
+  Filter a generated achievements list (site.Data.achievements.*) for the current language.
+  Japanese-language items (lang: ja) are dropped on the English site when
+  data/achievements/meta.yaml says english_page_excludes_japanese: true.
+  Input: a slice of entries. Returns: the filtered slice.
+*/}}
+{{ $items := . }}
+{{ $exclude_ja := false }}
+{{ with site.Data.achievements }}
+  {{ with .meta }}
+    {{ $exclude_ja = and (eq site.Language.Lang "en") (.english_page_excludes_japanese | default false) }}
+  {{ end }}
+{{ end }}
+{{ $out := slice }}
+{{ if reflect.IsSlice $items }}
+  {{ range $items }}
+    {{ if not (and $exclude_ja (eq (index . "lang") "ja")) }}
+      {{ $out = $out | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return $out }}

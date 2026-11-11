@@ -1,0 +1,25 @@
+{{/*
+  One award from data/achievements/awards.yaml.
+  Input: dict "award" (generated record) "number" (1-based index).
+*/}}
+{{ $award := .award }}
+{{ $number := .number | default 0 }}
+{{ $date := partial "achievements/date.html" (dict "date" $award.date "precision" $award.date_precision) }}
+
+<li class="relative flex gap-3 pl-0 py-1">
+  <span class="flex-shrink-0 text-sm font-mono text-gray-400 dark:text-gray-500 pt-0.5 w-8 text-right">[{{ $number }}]</span>
+  <div class="flex-1 text-base text-gray-800 dark:text-gray-200">
+    {{ if $award.url }}
+      <a href="{{ $award.url }}" target="_blank" rel="noopener" class="font-medium underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{{ $award.title }}</a>
+    {{ else }}
+      <span class="font-medium">{{ $award.title }}</span>
+    {{ end }}
+    <span class="text-gray-600 dark:text-gray-400">
+      {{- with $award.organization }}, {{ . }}{{ end -}}
+      {{- with $date }}, {{ . }}{{ end -}}.
+    </span>
+    {{ with $award.description }}
+    <div class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ . }}</div>
+    {{ end }}
+  </div>
+</li>

@@ -22,13 +22,12 @@ sections:
   - block: collection
     id: publications
     content:
-      title: 主要業績
+      title: 最近の業績
       text: ''
-      count: 0
+      count: 5
       filters:
         folders:
           - publications
-        featured_only: true
       archive:
         enable: true
         text: すべての業績を見る →
@@ -41,14 +40,4 @@ sections:
       username: me_ja
     design:
       date_format: '2006年1月'
-  - block: resume-awards
-    id: awards
-    content:
-      title: 受賞歴
-      username: me_ja
-  - block: resume-patents
-    id: patents
-    content:
-      title: 特許
-      username: me_ja
 ---

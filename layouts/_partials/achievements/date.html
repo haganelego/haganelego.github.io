@@ -1,0 +1,16 @@
+{{/*
+  Format a generated date according to its precision, localised via i18n.
+  Input: dict "date" (YYYY-MM-DD) "precision" (year|month|day). Returns: string.
+*/}}
+{{ $date := .date }}
+{{ $precision := .precision | default "day" }}
+{{ $key := printf "date_fmt_%s" $precision }}
+{{ $layout := i18n $key | default "January 2, 2006" }}
+{{ $out := printf "%v" $date }}
+{{ with $date }}
+  {{ $parsed := try (time .) }}
+  {{ if not $parsed.Err }}
+    {{ $out = $parsed.Value | time.Format $layout }}
+  {{ end }}
+{{ end }}
+{{ return $out }}

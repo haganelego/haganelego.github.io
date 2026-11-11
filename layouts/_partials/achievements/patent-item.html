@@ -1,0 +1,34 @@
+{{/*
+  One patent from data/achievements/patents.yaml.
+  Input: dict "patent" (generated record) "number" (1-based index).
+*/}}
+{{ $patent := .patent }}
+{{ $number := .number | default 0 }}
+{{ $numbers := slice }}
+{{ with $patent.application_number }}{{ $numbers = $numbers | append . }}{{ end }}
+{{ with $patent.publication_number }}{{ $numbers = $numbers | append . }}{{ end }}
+{{ with $patent.registration_number }}{{ $numbers = $numbers | append . }}{{ end }}
+{{ $status := i18n (printf "patent_status_%s" $patent.status) | default $patent.status }}
+{{ $date := "" }}
+{{ with $patent.application_date }}
+  {{ $date = partial "achievements/date.html" (dict "date" . "precision" "day") }}
+{{ end }}
+
+<li class="relative flex gap-3 pl-0 py-1">
+  <span class="flex-shrink-0 text-sm font-mono text-gray-400 dark:text-gray-500 pt-0.5 w-8 text-right">[{{ $number }}]</span>
+  <div class="flex-1 text-base text-gray-800 dark:text-gray-200">
+    <span class="text-gray-700 dark:text-gray-300">{{ delimit $patent.inventors ", " }}</span>,
+    {{ if $patent.url }}
+      <a href="{{ $patent.url }}" target="_blank" rel="noopener" class="font-medium underline hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{{ $patent.title }}</a>
+    {{ else }}
+      <span class="font-medium">{{ $patent.title }}</span>
+    {{ end }}
+    <span class="text-gray-600 dark:text-gray-400">
+      {{- if $numbers }}, {{ delimit $numbers " / " }}{{ end -}}
+      {{- with $date }} ({{ . }}){{ end -}}.
+    </span>
+    <div class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+      {{ with $patent.applicants }}{{ i18n "patent_applicant" | default "Applicant" }}: {{ delimit . ", " }} &#8729; {{ end }}{{ $status }}
+    </div>
+  </div>
+</li>

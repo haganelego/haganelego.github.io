@@ -1,0 +1,22 @@
+# Site-side settings for tools.export_hugoblox (kanaoka-lab/lab-achievements).
+# Everything about *which* records appear and *how they are grouped* lives here;
+# the records themselves are never edited in this repository.
+languages:
+  en: content
+  ja: content/ja
+sections:                       # /publications sections, in display order (i18n key: pub_<section>)
+  journal: [international_journal, domestic_journal]
+  international: [international_conference]
+  misc: [domestic_conference, workshop]
+  preprint: [arxiv]
+  # thesis is deliberately in no section -> not shown
+detail_pages: [journal, international]   # these get a page bundle and feed "Recent Publications"
+english_page_excludes_japanese: true
+exclude: []                              # record IDs to hide, e.g. [award-000002]
+slugs:                                   # keep the URLs of the previously hand-written pages
+  pub-000015: kanaoka2023bmvc
+  pub-000010: kanaoka2025simple
+  pub-000013: kanaoka2026abc
+  pub-000012: kanaoka2026bio
+  pub-000004: ono2022wrs
+  pub-000003: kanaoka2022visapp

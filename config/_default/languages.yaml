@@ -1,13 +1,14 @@
 # Languages
 #   Documentation: https://docs.hugoblox.com/reference/language/
+# Japanese is the default language: / redirects to /ja/, English lives under /en/.
+# Content directories per language are mounted in module.yaml (content -> en, content/ja -> ja).
 
-# Default language (English)
-en:
-  languageCode: en-us
-  languageName: English
-
-# Japanese
 ja:
   languageCode: ja
   languageName: 日本語
-  contentDir: content/ja
+  weight: 1
+
+en:
+  languageCode: en-us
+  languageName: English
+  weight: 2

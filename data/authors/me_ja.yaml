@@ -11,9 +11,9 @@ name:
 postnominals: []
 status:
   icon: ''
-role: 特別研究員
+role: 講師
 bio: |
-  理化学研究所 ガーディアンロボットプロジェクト 特別研究員。
+  大分大学 理工学部 理工学科 DX人材育成基盤プログラム 講師。
   九州工業大学にて博士（工学）を取得。
   人とロボットが共生する社会の実現を目指し，マルチモーダル学習，3次元復元，ヒューマンロボットインタラクション，サービスロボティクスに関する研究に従事。
   IEEE，日本ロボット学会会員。
@@ -21,8 +21,8 @@ bio: |
 affiliations: []
 
 current_affiliations:
-  - role: 特別研究員
-    org: 理化学研究所 ガーディアンロボットプロジェクト
+  - role: 講師
+    org: 大分大学 理工学部 理工学科 DX人材育成基盤プログラム
   - role: 支援研究員
     org: 九州工業大学
   - role: 理事長
@@ -30,9 +30,6 @@ current_affiliations:
     url: https://fukuokarc.org/
 
 links:
-  - icon: at-symbol
-    url: mailto:daiju.kanaoka@riken.jp
-    label: E-mail
   - icon: brands/x
     url: https://x.com/haganeLego
   - icon: brands/github
@@ -69,9 +66,14 @@ education:
     end: 2020-03-31
 
 experience:
+  - role: 講師
+    org: 大分大学 理工学部 理工学科 DX人材育成基盤プログラム
+    start: 2026-11-01
+    summary: ''
   - role: 特別研究員
     org: 理化学研究所 ガーディアンロボットプロジェクト マルチモーダルデータ認識研究チーム
     start: 2025-11-01
+    end: 2026-10-31
     summary: ''
   - role: 支援研究員
     org: 九州工業大学
@@ -86,6 +88,11 @@ experience:
     org: 理化学研究所 ガーディアンロボットプロジェクト マルチモーダルデータ認識研究チーム
     start: 2025-04-01
     end: 2025-04-30
+    summary: ''
+  - role: 訪問研究員
+    org: Laboratoire lorrain de recherche en informatique et ses applications（LORIA），フランス
+    start: 2024-11-01
+    end: 2025-03-31
     summary: ''
   - role: 研修生
     org: 理化学研究所 ガーディアンロボットプロジェクト マルチモーダルデータ認識研究チーム
@@ -107,52 +114,4 @@ experience:
     summary: |
       World Robot Olympiadは子供向けの世界最大級のロボットコンテストの一つです。
 
-awards:
-  - title: "令和五年（2023）年度PRMU月間ベストプレゼンテーション賞"
-    awarder: 電子情報通信学会 PRMU研究会
-    date: "2024-03-01"
-    icon: hero/trophy
-  - title: "RoboCupJapanOpen 2022 @Homeリーグ Domestic Standard Platform 優勝"
-    awarder: RoboCup
-    date: "2023-01-01"
-    icon: hero/trophy
-  - title: "RoboCupJapanOpen 2021 @Homeリーグ Domestic Standard Platform 優勝"
-    awarder: RoboCup
-    date: "2022-01-01"
-    icon: hero/trophy
-  - title: "World Robot Challenge 2020 パートナーロボットチャレンジ（実機） 優勝"
-    awarder: World Robot Challenge
-    date: "2021-01-01"
-    icon: hero/trophy
-  - title: "RoboCup WORLDWIDE2021 @Home Domestic Standard Platform League 準優勝"
-    awarder: RoboCup
-    date: "2021-06-01"
-    icon: hero/trophy
-  - title: "SAES 最優秀ポスター賞"
-    awarder: SAES
-    date: "2021-03-01"
-    icon: hero/trophy
-  - title: "RoboCupJapanOpen 2020 @Homeリーグ Domestic Standard Platform 優勝"
-    awarder: RoboCup
-    date: "2020-01-01"
-    icon: hero/trophy
-  - title: "RoboCup Asia-Pacific TianJin Invitational Tournament 2019 準優勝"
-    awarder: RoboCup
-    date: "2019-01-01"
-    icon: hero/trophy
-  - title: "World Robot Olympiad 2015 カタール国際大会 3位"
-    awarder: World Robot Olympiad
-    date: "2015-11-01"
-    icon: hero/trophy
-  - title: "World Robot Olympiad 2015 全国大会 準優勝"
-    awarder: World Robot Olympiad
-    date: "2015-09-01"
-    icon: hero/trophy
-
-patents:
-  - title: "画像認識装置および画像認識方法"
-    inventors: "金岡 大樹, 田向 権, 田中 悠一朗"
-    applicant: "国立大学法人九州工業大学"
-    number: "特願2021-185971 / 特開2023-073127"
-    date: "2021-11-15"
-    icon: hero/document-text
+# awards / patents are generated from lab-achievements (see README.md), not written here.

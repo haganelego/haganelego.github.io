@@ -11,5 +11,5 @@ main:
     url: /#experience
     weight: 30
   - name: 受賞
-    url: /#awards
+    url: /publications/#awards
     weight: 40
