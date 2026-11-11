@@ -27,3 +27,18 @@ mounts:
     target: layouts
   - source: assets
     target: assets
+  # Content per language. A mount without `lang` would go to the default language
+  # (Japanese), so English is mounted explicitly and the nested ja/ folder excluded.
+  - source: content
+    target: content
+    sites:
+      matrix:
+        languages: [en]
+    files:
+      - '**'
+      - '!ja/**'
+  - source: content/ja
+    target: content
+    sites:
+      matrix:
+        languages: [ja]

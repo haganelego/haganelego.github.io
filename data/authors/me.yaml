@@ -11,18 +11,18 @@ name:
 postnominals: []
 status:
   icon: ''
-role: Postdoctoral Researcher
+role: Lecturer
 bio: |
   Daiju Kanaoka received the B.Eng. and M.Eng. degrees from Kyushu Institute of Technology, Japan, in 2020 and 2022, and the Ph.D. degree in engineering from Kyushu Institute of Technology in 2025.
-  He is currently a Postdoctoral Researcher at RIKEN, Guardian Robot Project.
+  He is currently a Lecturer at Oita University, Faculty of Science and Technology.
   His research interests include multimodal learning, 3D reconstruction, human-robot interaction, and service robotics.
   He is a member of the IEEE and RSJ.
 
 affiliations: []
 
 current_affiliations:
-  - role: Postdoctoral Researcher
-    org: RIKEN, Guardian Robot Project
+  - role: Lecturer
+    org: Oita University, Faculty of Science and Technology, DX Human Resource Development Foundation Program
   - role: Part-time Researcher
     org: Kyushu Institute of Technology
   - role: Board Chair
@@ -30,9 +30,6 @@ current_affiliations:
     url: https://fukuokarc.org/
 
 links:
-  - icon: at-symbol
-    url: mailto:daiju.kanaoka@riken.jp
-    label: E-mail Me
   - icon: brands/x
     url: https://x.com/haganeLego
   - icon: brands/github
@@ -69,9 +66,14 @@ education:
     end: 2020-03-31
 
 experience:
+  - role: Lecturer
+    org: Oita University, Faculty of Science and Technology, DX Human Resource Development Foundation Program
+    start: 2026-11-01
+    summary: ''
   - role: Postdoctoral Researcher
     org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
     start: 2025-11-01
+    end: 2026-10-31
     summary: ''
   - role: Part-time Researcher
     org: Kyushu Institute of Technology
@@ -86,6 +88,11 @@ experience:
     org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team
     start: 2025-04-01
     end: 2025-04-30
+    summary: ''
+  - role: Visiting Researcher
+    org: Laboratoire lorrain de recherche en informatique et ses applications (LORIA), France
+    start: 2024-11-01
+    end: 2025-03-31
     summary: ''
   - role: Research Trainee
     org: RIKEN, Guardian Robot Project, Multimodal Data Recognition Research Team

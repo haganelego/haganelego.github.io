@@ -9,8 +9,10 @@
   authors:
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 川西 康友
     owner: false
+    co_first: false
   year: 2026
   month: 9
   date: '2026-09-01'
@@ -35,12 +37,16 @@
   authors:
   - name: Yuga Yano
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   - name: Yasutomo Kawanishi
     owner: false
+    co_first: false
   year: 2026
   month: 9
   date: '2026-09-01'
@@ -64,8 +70,10 @@
   authors:
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 川西 康友
     owner: false
+    co_first: false
   year: 2026
   month: 8
   date: '2026-08-01'
@@ -89,8 +97,10 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Yasutomo Kawanishi
     owner: false
+    co_first: false
   year: 2026
   month: 3
   date: '2026-03-01'
@@ -115,10 +125,13 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   - name: Hendry F. Chame
     owner: false
+    co_first: false
   year: 2026
   month: 1
   date: '2026-01-01'
@@ -142,10 +155,13 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2025
   month: 4
   date: '2025-04-01'
@@ -169,12 +185,16 @@
   authors:
   - name: Kosei Yamao
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Kosei Isomoto
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2025
   month: 1
   date: '2025-01-01'
@@ -198,12 +218,16 @@
   authors:
   - name: Kosei Yamao
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Kosei Isomoto
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2024
   month: 11
   date: '2024-11-01'
@@ -227,60 +251,88 @@
   authors:
   - name: Kosei Isomoto
     owner: false
+    co_first: false
   - name: Akinobu Mizutani
     owner: false
+    co_first: false
   - name: Fumiya Matsuzaki
     owner: false
+    co_first: false
   - name: Hikaru Sato
     owner: false
+    co_first: false
   - name: Ikuya Matsumoto
     owner: false
+    co_first: false
   - name: Kosei Yamao
     owner: false
+    co_first: false
   - name: Takuya Kawabata
     owner: false
+    co_first: false
   - name: Tomoya Shiba
     owner: false
+    co_first: false
   - name: Yuga Yano
     owner: false
+    co_first: false
   - name: Atsuki Yokota
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Hiromasa Yamaguchi
     owner: false
+    co_first: false
   - name: Kazuya Murai
     owner: false
+    co_first: false
   - name: Kim Minje
     owner: false
+    co_first: false
   - name: Lu Shen
     owner: false
+    co_first: false
   - name: Mayo Suzuka
     owner: false
+    co_first: false
   - name: Moeno Anraku
     owner: false
+    co_first: false
   - name: Naoki Yamaguchi
     owner: false
+    co_first: false
   - name: Satsuki Fujimatsu
     owner: false
+    co_first: false
   - name: Shoshi Tokuno
     owner: false
+    co_first: false
   - name: Tadataka Mizo
     owner: false
+    co_first: false
   - name: Tomoaki Fujino
     owner: false
+    co_first: false
   - name: Yuuki Nakadera
     owner: false
+    co_first: false
   - name: Yuka Shishido
     owner: false
+    co_first: false
   - name: Yusuke Nakaoka
     owner: false
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Takashi Morie
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2024
   month: 10
   date: '2024-10-01'
@@ -305,16 +357,22 @@
   authors:
   - name: Yuga Yano
     owner: false
+    co_first: false
   - name: Akinobu Mizutani
     owner: false
+    co_first: false
   - name: Yukiya Fukuda
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Tomohiro Ono
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2024
   month: 10
   date: '2024-10-01'
@@ -339,12 +397,16 @@
   authors:
   - name: 矢野 優雅
     owner: false
+    co_first: false
   - name: 小林 遼平
     owner: false
+    co_first: false
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2024
   month: 9
   date: '2024-09-01'
@@ -368,12 +430,16 @@
   authors:
   - name: 山尾 晃世
     owner: false
+    co_first: false
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 磯本 航世
     owner: false
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2024
   month: 9
   date: '2024-09-01'
@@ -397,10 +463,13 @@
   authors:
   - name: 金岡 大樹
     owner: true
+    co_first: true
   - name: 福田 有輝也
     owner: false
+    co_first: true
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2024
   month: 8
   date: '2024-08-01'
@@ -424,10 +493,13 @@
   authors:
   - name: 福田 有輝也
     owner: false
+    co_first: true
   - name: 金岡 大樹
     owner: true
+    co_first: true
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2024
   month: 3
   date: '2024-03-01'
@@ -451,16 +523,22 @@
   authors:
   - name: Kosei Yamao
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Kosei Isomoto
     owner: false
+    co_first: false
   - name: Akinobu Mizutani
     owner: false
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2024
   month: 2
   date: '2024-02-01'
@@ -484,12 +562,16 @@
   authors:
   - name: 山尾 晃世
     owner: false
+    co_first: false
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 磯本 航世
     owner: false
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2024
   month: null
   date: '2024-01-01'
@@ -513,12 +595,16 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Motoharu Sonogashira
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   - name: Yasutomo Kawanishi
     owner: false
+    co_first: false
   year: 2023
   month: 11
   date: '2023-11-01'
@@ -542,60 +628,88 @@
   authors:
   - name: Tomoya Shiba
     owner: false
+    co_first: false
   - name: Akinobu Mizutani
     owner: false
+    co_first: false
   - name: Yuga Yano
     owner: false
+    co_first: false
   - name: Tomohiro Ono
     owner: false
+    co_first: false
   - name: Shoshi Tokuno
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Yukiya Fukuda
     owner: false
+    co_first: false
   - name: Hayato Amano
     owner: false
+    co_first: false
   - name: Mayu Koresawa
     owner: false
+    co_first: false
   - name: Yoshifumi Sakai
     owner: false
+    co_first: false
   - name: Ryogo Takemoto
     owner: false
+    co_first: false
   - name: Katsunori Tamai
     owner: false
+    co_first: false
   - name: Kazuo Nakahara
     owner: false
+    co_first: false
   - name: Hiroyuki Hayashi
     owner: false
+    co_first: false
   - name: Satsuki Fujimatsu
     owner: false
+    co_first: false
   - name: Yusuke Mizoguchi
     owner: false
+    co_first: false
   - name: Moeno Anraku
     owner: false
+    co_first: false
   - name: Mayo Suzuka
     owner: false
+    co_first: false
   - name: Lu Shen
     owner: false
+    co_first: false
   - name: Kohei Maeda
     owner: false
+    co_first: false
   - name: Fumiya Matsuzaki
     owner: false
+    co_first: false
   - name: Ikuya Matsumoto
     owner: false
+    co_first: false
   - name: Kazuya Murai
     owner: false
+    co_first: false
   - name: Kosei Isomoto
     owner: false
+    co_first: false
   - name: Kim Minje
     owner: false
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Takashi Morie
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2023
   month: 10
   date: '2023-10-01'
@@ -619,12 +733,16 @@
   authors:
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 薗頭 元春
     owner: false
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   - name: 川西 康友
     owner: false
+    co_first: false
   year: 2023
   month: 7
   date: '2023-07-01'
@@ -648,12 +766,16 @@
   authors:
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 薗頭 元春
     owner: false
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   - name: 川西 康友
     owner: false
+    co_first: false
   year: 2023
   month: 3
   date: '2023-03-01'
@@ -677,10 +799,13 @@
   authors:
   - name: Ikuya Matsumoto
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2023
   month: 2
   date: '2023-02-01'
@@ -704,12 +829,16 @@
   authors:
   - name: 山尾 晃世
     owner: false
+    co_first: false
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 磯本 航世
     owner: false
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2023
   month: null
   date: '2023-01-01'
@@ -733,64 +862,94 @@
   authors:
   - name: Tomoya Shiba
     owner: false
+    co_first: false
   - name: Tomohiro Ono
     owner: false
+    co_first: false
   - name: Shoshi Tokuno
     owner: false
+    co_first: false
   - name: Issei Uchino
     owner: false
+    co_first: false
   - name: Masaya Okamoto
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Kazutaka Takahashi
     owner: false
+    co_first: false
   - name: Kenta Tsukamoto
     owner: false
+    co_first: false
   - name: Yoshiaki Tsutsumi
     owner: false
+    co_first: false
   - name: Yugo Nakamura
     owner: false
+    co_first: false
   - name: Yukiya Fukuda
     owner: false
+    co_first: false
   - name: Yusuke Hoji
     owner: false
+    co_first: false
   - name: Hayato Amano
     owner: false
+    co_first: false
   - name: Yuma Kubota
     owner: false
+    co_first: false
   - name: Mayu Koresawa
     owner: false
+    co_first: false
   - name: Yoshifumi Sakai
     owner: false
+    co_first: false
   - name: Ryogo Takemoto
     owner: false
+    co_first: false
   - name: Katsunori Tamai
     owner: false
+    co_first: false
   - name: Kazuo Nakahara
     owner: false
+    co_first: false
   - name: Hiroyuki Hayashi
     owner: false
+    co_first: false
   - name: Satsuki Fujimatsu
     owner: false
+    co_first: false
   - name: Akinobu Mizutani
     owner: false
+    co_first: false
   - name: Yusuke Mizoguchi
     owner: false
+    co_first: false
   - name: Yuhei Yoshimitsu
     owner: false
+    co_first: false
   - name: Mayo Suzuka
     owner: false
+    co_first: false
   - name: Ikuya Matsumoto
     owner: false
+    co_first: false
   - name: Yuga Yano
     owner: false
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Takashi Morie
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2022
   month: 11
   date: '2022-11-01'
@@ -814,22 +973,31 @@
   authors:
   - name: Tomohiro Ono
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Tomoya Shiba
     owner: false
+    co_first: false
   - name: Shoshi Tokuno
     owner: false
+    co_first: false
   - name: Yuga Yano
     owner: false
+    co_first: false
   - name: Akinobu Mizutani
     owner: false
+    co_first: false
   - name: Ikuya Matsumoto
     owner: false
+    co_first: false
   - name: Hayato Amano
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2022
   month: 9
   date: '2022-09-01'
@@ -853,10 +1021,13 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2022
   month: 2
   date: '2022-02-01'
@@ -881,10 +1052,13 @@
   authors:
   - name: 金岡 大樹
     owner: true
+    co_first: false
   - name: 田中 悠一朗
     owner: false
+    co_first: false
   - name: 田向 権
     owner: false
+    co_first: false
   year: 2021
   month: 12
   date: '2021-12-01'
@@ -908,10 +1082,13 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2021
   month: 12
   date: '2021-12-01'
@@ -936,10 +1113,13 @@
   authors:
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Yutaro Ishida
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2020
   month: 10
   date: '2020-10-01'
@@ -963,44 +1143,64 @@
   authors:
   - name: Tomohiro Ono
     owner: false
+    co_first: false
   - name: Yuichiro Tanaka
     owner: false
+    co_first: false
   - name: Yutaro Ishida
     owner: false
+    co_first: false
   - name: Yushi Abe
     owner: false
+    co_first: false
   - name: Kazuki Kanamaru
     owner: false
+    co_first: false
   - name: Daichi Kamimura
     owner: false
+    co_first: false
   - name: Kentaro Nakamura
     owner: false
+    co_first: false
   - name: Yuta Nishimura
     owner: false
+    co_first: false
   - name: Shoshi Tokuno
     owner: false
+    co_first: false
   - name: Yuya Mii
     owner: false
+    co_first: false
   - name: Morio Yamauchi
     owner: false
+    co_first: false
   - name: Yuichiro Uemura
     owner: false
+    co_first: false
   - name: Takunori Hashimoto
     owner: false
+    co_first: false
   - name: Yugo Nakamura
     owner: false
+    co_first: false
   - name: Issei Uchino
     owner: false
+    co_first: false
   - name: Daiju Kanaoka
     owner: true
+    co_first: false
   - name: Takeru Hanyu
     owner: false
+    co_first: false
   - name: Kenta Tsukamoto
     owner: false
+    co_first: false
   - name: Takashi Morie
     owner: false
+    co_first: false
   - name: Hakaru Tamukoh
     owner: false
+    co_first: false
   year: 2020
   month: 5
   date: '2020-05-01'

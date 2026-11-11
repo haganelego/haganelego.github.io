@@ -11,9 +11,9 @@ name:
 postnominals: []
 status:
   icon: ''
-role: 特別研究員
+role: 講師
 bio: |
-  理化学研究所 ガーディアンロボットプロジェクト 特別研究員。
+  大分大学 理工学部 理工学科 DX人材育成基盤プログラム 講師。
   九州工業大学にて博士（工学）を取得。
   人とロボットが共生する社会の実現を目指し，マルチモーダル学習，3次元復元，ヒューマンロボットインタラクション，サービスロボティクスに関する研究に従事。
   IEEE，日本ロボット学会会員。
@@ -21,8 +21,8 @@ bio: |
 affiliations: []
 
 current_affiliations:
-  - role: 特別研究員
-    org: 理化学研究所 ガーディアンロボットプロジェクト
+  - role: 講師
+    org: 大分大学 理工学部 理工学科 DX人材育成基盤プログラム
   - role: 支援研究員
     org: 九州工業大学
   - role: 理事長
@@ -30,9 +30,6 @@ current_affiliations:
     url: https://fukuokarc.org/
 
 links:
-  - icon: at-symbol
-    url: mailto:daiju.kanaoka@riken.jp
-    label: E-mail
   - icon: brands/x
     url: https://x.com/haganeLego
   - icon: brands/github
@@ -69,9 +66,14 @@ education:
     end: 2020-03-31
 
 experience:
+  - role: 講師
+    org: 大分大学 理工学部 理工学科 DX人材育成基盤プログラム
+    start: 2026-11-01
+    summary: ''
   - role: 特別研究員
     org: 理化学研究所 ガーディアンロボットプロジェクト マルチモーダルデータ認識研究チーム
     start: 2025-11-01
+    end: 2026-10-31
     summary: ''
   - role: 支援研究員
     org: 九州工業大学
@@ -86,6 +88,11 @@ experience:
     org: 理化学研究所 ガーディアンロボットプロジェクト マルチモーダルデータ認識研究チーム
     start: 2025-04-01
     end: 2025-04-30
+    summary: ''
+  - role: 訪問研究員
+    org: Laboratoire lorrain de recherche en informatique et ses applications（LORIA），フランス
+    start: 2024-11-01
+    end: 2025-03-31
     summary: ''
   - role: 研修生
     org: 理化学研究所 ガーディアンロボットプロジェクト マルチモーダルデータ認識研究チーム

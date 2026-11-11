@@ -23,6 +23,7 @@
         {{- range $i, $a := $entry.authors -}}
           {{- if gt $i 0 }}, {{ end -}}
           {{- if $a.owner }}<strong>{{ $a.name }}</strong>{{ else }}{{ $a.name }}{{ end -}}
+          {{- if $a.co_first }}<sup title="{{ i18n "equal_contribution" | default "Equal contribution" }}">&dagger;</sup>{{ end -}}
         {{- end -}}
       </span>
       {{ with $entry.year }}({{ . }}).{{ end }}
@@ -47,6 +48,13 @@
         </span>
       {{ end }}.
     </div>
+
+    {{/* Equal contribution footnote */}}
+    {{ $has_co_first := false }}
+    {{ range $entry.authors }}{{ if .co_first }}{{ $has_co_first = true }}{{ end }}{{ end }}
+    {{ if $has_co_first }}
+    <div class="mt-1 text-xs text-gray-500 dark:text-gray-400"><sup>&dagger;</sup> {{ i18n "equal_contribution" | default "Equal contribution" }}</div>
+    {{ end }}
 
     {{/* Identifiers */}}
     {{ if or $entry.doi $entry.arxiv_id (and $entry.url (not $content_page)) }}
